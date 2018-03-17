@@ -64,7 +64,7 @@ static void nl_demo_data_ready(struct sk_buff *skb)
             out_skb = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
             if (!out_skb) goto failure;
 
-            out_nlh = nlmsg_put(out_skb, 0, 0, NLMSG_ECHO_RESPONSE, payload_len, 0);
+            out_nlh = nlmsg_put(out_skb, 0, 0, NLMSG_ECHO_RESPONSE, payload_len+strlen("[from kernel]:"), 0);
             if (!out_nlh) goto failure;
 
             out_payload = nlmsg_data(out_nlh);
